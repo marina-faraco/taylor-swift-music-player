@@ -1,5 +1,4 @@
 from albums import *
-import webbrowser
 
 # Listar os albuns
 print(listar_albuns())
@@ -11,4 +10,5 @@ print(listar_musicas(album_escolhido))
 musica_escolhida = input("Escolha uma música: ")
 # Tocar música
 print(tocar_musica(album_escolhido, musica_escolhida))
+
 
