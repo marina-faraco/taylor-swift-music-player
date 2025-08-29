@@ -43,4 +43,4 @@ O objetivo é praticar **fundamentos de Python**, organização de código e int
 ---
 ## ✅ Status do Projeto
 
-🚧 **Em desenvolvimento** — começando pelo Nível 1 (links do YouTube).
+🚧 **Em desenvolvimento** — Iniciando GUI.

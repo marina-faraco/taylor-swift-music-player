@@ -507,29 +507,13 @@ def album():
     return albuns
 
 def listar_albuns():
-    albuns = album()
-
-    print('-' * 20)
-    print(f"\033[35m ALBUNS: \033[m")
-    print('-' * 20)
-
-    lista_formatada = "\n".join([f"- {musica}"for musica in albuns.keys()])
-
-    return lista_formatada
+    return list(album().keys())
     
 def listar_musicas(album_escolhido):
     albuns = album()
     if album_escolhido not in albuns:
-        return f'{album_escolhido} não é um album da Taylor. Tente novamente!'
-    
-    print('-' * 20)
-    print(f"\033[35m MÚSICAS DE {(album_escolhido).upper()}: \033[m")
-    print('-' * 20)
-
-    musicas = albuns[album_escolhido]
-    lista_formatada = "\n".join([f"- {musica}"for musica in musicas.keys()])
-
-    return lista_formatada
+        return []
+    return list(albuns[album_escolhido].keys())
 
 def tocar_musica(album_escolhido, musica_escolhida):
     albuns = album()
