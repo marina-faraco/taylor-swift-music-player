@@ -43,4 +43,4 @@ O objetivo é praticar **fundamentos de Python**, organização de código e int
 ---
 ## ✅ Status do Projeto
 
-🚧 **Em desenvolvimento** — Nível 3 a iniciar.
+🚧 **Em desenvolvimento** — Nível 3 em andamento.

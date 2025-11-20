@@ -26,7 +26,7 @@ def listar_musicas(album_escolhido):
         return []
     return list(albuns[album_escolhido].keys())
 
-def tocar_musica(album_escolhido, musica_escolhida):
+def tocar(album_escolhido, musica_escolhida):
     albuns = album()
     # Verifica se album existe
     if album_escolhido not in albuns:
