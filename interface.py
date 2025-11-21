@@ -1,8 +1,8 @@
 from tkinter import *
-from albums import *
+from albums import listar_musicas, tocar
 
 def mostrar_musicas(album):
-    musicas = listar_musicas(album)
+    nomes, mapa_ids = listar_musicas(album)
 
     nova_janela = Toplevel(janela)
     nova_janela.title(album)
@@ -15,7 +15,7 @@ def mostrar_musicas(album):
     scrollbar.pack(side=RIGHT, fill=Y)
 
     lb = Listbox(frame, yscrollcommand=scrollbar.set)
-    for m in musicas:
+    for m in nomes:
         lb.insert(END, m)
     lb.pack(side=LEFT, fill='both', expand=True)
     scrollbar.config(command=lb.yview)
@@ -24,9 +24,8 @@ def mostrar_musicas(album):
         sel = lb.curselection()
         if not sel:
             return
-        index = sel[0]
-        musica = musicas[index]
-        tocar_musica(album_escolhido=album, musica_escolhida=musica)
+        musica = nomes[sel[0]]
+        tocar(musica, mapa_ids)
 
     # Double-click para tocar
     lb.bind('<Double-1>', on_play)

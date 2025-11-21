@@ -1,4 +1,22 @@
 import webbrowser
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID")
+CLIENT_SECRET = os.getenv("SPOTIPY_CLIENT_SECRET")
+
+if not CLIENT_ID or not CLIENT_SECRET:
+    raise ValueError("As variáveis de ambiente SPOTIPY_CLIENT_ID e SPOTIPY_CLIENT_SECRET não foram carregadas!")
+
+sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
+    client_id=CLIENT_ID,
+    client_secret=CLIENT_SECRET
+))
+
 
 def album(): 
     albuns = {
@@ -22,20 +40,27 @@ def listar_albuns():
     
 def listar_musicas(album_escolhido):
     albuns = album()
-    if album_escolhido not in albuns:
-        return []
-    return list(albuns[album_escolhido].keys())
+    album_id = albuns[album_escolhido]
 
-def tocar(album_escolhido, musica_escolhida):
-    albuns = album()
-    # Verifica se album existe
-    if album_escolhido not in albuns:
-        return f'Esse álbum não existe 😅'
+    resultado = sp.album_tracks(album_id)
 
-    # Verifica se a música está no album
-    if musica_escolhida not in albuns[album_escolhido]:
-        return f'Essa não é uma música da loirinha 😅'
+    nomes = []
+    mapa_ids = {}   # nome + id
+
+    for track in resultado["items"]:
+        nome = track["name"]
+        id_musica = track["id"]
+
+        nomes.append(nome)
+        mapa_ids[nome] = id_musica
     
-    url = albuns[album_escolhido][musica_escolhida]
+    return nomes, mapa_ids
+
+def tocar(musica_escolhida, mapa_ids):
+    if musica_escolhida not in mapa_ids:
+        return f'Esse música não existe nesse álbum😅'
+    
+    id_musica = mapa_ids[musica_escolhida]
+    url = f"https://open.spotify.com/track/{id_musica}"
     return webbrowser.open_new(url)
 
