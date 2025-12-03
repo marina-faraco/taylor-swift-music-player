@@ -77,7 +77,7 @@ mid_botao.grid(column=0, row=4, padx=10, pady=5, sticky='ew')
 ttpd_botao = Button(janela, text='The Tortured Poets Department', command=lambda:mostrar_musicas('The Tortured Poets Department'),width=25)
 ttpd_botao.grid(column=1, row=4, padx=10, pady=5, sticky='ew')
 
-tls_botao = Button(janela, text='The Life of a Showgirl', command='',width=25)
+tls_botao = Button(janela, text='The Life of a Showgirl', command=lambda:mostrar_musicas("The Life of a Showgirl"),width=25)
 tls_botao.grid(column=2, row=4, padx=10, pady=5, sticky='ew')
 
 # Criar widget de saída

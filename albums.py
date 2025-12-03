@@ -31,7 +31,7 @@ def album():
         "Evermore": "6AORtDjduMM3bupSWzbTSG",
         "Midnights": "1fnJ7k0bllNfL1kVdNVW1A",
         "The Tortured Poets Department": "5H7ixXZfsNMGbIE5OBSpcb",
-        "The Life of a Showgirl": "6mkrNYyhrReQKarMFBlhUg"     
+        "The Life of a Showgirl": "4a6NzYL1YHRUgx9e3YZI6I"     
     }
     return albuns
 
